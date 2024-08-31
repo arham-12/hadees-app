@@ -13,7 +13,7 @@ from langchain_community.chat_message_histories import (
 
 
 
-api_key = st.secrets["api_key"]['langchain_community']
+api_key = st.secrets["api_key"]['GROQ_API_KEY']
 
 
 csv_file = '/home/arham/Desktop/project/app/document_metadata (1).csv'
