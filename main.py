@@ -11,6 +11,8 @@ from langchain_community.chat_message_histories import (
     StreamlitChatMessageHistory,
 )
 
+import subprocess
+subprocess.run(["pip", "list"])
 
 
 
@@ -165,7 +167,7 @@ def generate_chat_response(question, index, document_data, api_key):
 
 def main():
     st.title("Ai Hadees App")
-    path = '/home/arham/Desktop/project/app/image/Screenshot from 2024-08-31 16-50-58.png'
+    path = 'image/Screenshot from 2024-08-31 16-50-58.png'
 
     st.sidebar.image(path, use_column_width=True)
 
