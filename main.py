@@ -19,8 +19,8 @@ subprocess.run(["pip", "list"])
 api_key = st.secrets["api_key"]['GROQ_API_KEY']
 
 
-csv_file = '/home/arham/Desktop/project/app/document_metadata (1).csv'
-emb = '/home/arham/Desktop/project/app/faiss_index (1).bin'
+csv_file = 'document_metadata (1).csv'
+emb = '/faiss_index (1).bin'
 
 # Initialize the language model with specified parameters
 llm = ChatGroq(
