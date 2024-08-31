@@ -20,7 +20,7 @@ api_key = st.secrets["api_key"]['GROQ_API_KEY']
 
 
 csv_file = 'document_metadata (1).csv'
-emb = '/faiss_index (1).bin'
+emb = 'faiss_index (1).bin'
 
 # Initialize the language model with specified parameters
 llm = ChatGroq(
