@@ -26,7 +26,7 @@ emb = 'faiss_index (1).bin'
 llm = ChatGroq(
     api_key=api_key,
     model_name="llama-3.1-70b-versatile",
-    temperature=0,
+    temperature=0.3,
 )
 
 
@@ -121,7 +121,7 @@ def generate_chat_response(question, index, document_data, api_key):
             2.translate the Hadith into Arabic and urdu  language.
             2. Explain the Hadith or the relevant content in Urdu to provide a comprehensive answer. Make sure the response is accurate, respectful, and clear. The translation into Arabic should be precise, and the explanation in Urdu should be accessible and detailed."""),  # System message introducing the assistant's role
             MessagesPlaceholder(variable_name="history"),  # Placeholder for chat history
-            ("human", """Give the hadees about this : {question} with reference of hadith in arabic and urdu.
+            ("human", """explain the topic of user : {question} with reference of hadith in arabic and urdu.
             this is Relevant material for you : {context}"""),
             # Message template for user input, with placeholders for user's question and context
         ]
