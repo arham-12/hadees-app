@@ -1,8 +1,9 @@
+import os
 import faiss
 import numpy as np
-
 import pandas as pd
 import streamlit as st 
+from  streamlit_chat import message
 from langchain_groq import ChatGroq
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_core.runnables.history import RunnableWithMessageHistory
@@ -11,14 +12,10 @@ from langchain_community.chat_message_histories import (
     StreamlitChatMessageHistory,
 )
 
-import subprocess
-subprocess.run(["pip", "list"])
-
-
 
 api_key = st.secrets["api_key"]['GROQ_API_KEY']
 
-
+# api_key = os.getenv('GROQ_API_KEY')
 csv_file = 'document_metadata (1).csv'
 emb = 'faiss_index (1).bin'
 
@@ -146,7 +143,6 @@ def generate_chat_response(question, index, document_data, api_key):
     # st.write(runable_chain)
     # Add the user's message to the history
     history.add_user_message(question)
-
    
   
     # Get the AI response from the language model using the chain with history
@@ -159,7 +155,6 @@ def generate_chat_response(question, index, document_data, api_key):
 
     # Add the AI response to the history
     history.add_ai_message(response.content)
-    
     st.session_state.chats.append({"user": question, "ai": response.content})
     # Return the response content from the AI model
     return response.content
@@ -180,17 +175,14 @@ def main():
         # context = retrieve_context(user_input, index, document_data)
         # print(context)
         response = generate_chat_response(question=user_input, api_key=api_key,index=index, document_data=document_data)
-        for chat in st.session_state.chats:
-    # Create two columns: one for the AI message (left) and one for the user message (right)
-
+        for i, chat in enumerate(st.session_state.chats):
+        # Create two columns: one for the AI message (left) and one for the user message (right)
+        
+            with st.container():
+                message(chat["user"], is_user=True, key=f"user_{i}")
             
             with st.container():
-                with st.chat_message("user"):
-                    st.write(chat["user"])
-            
-            with st.container(border=True):
-                with st.chat_message("ai"):
-                    st.write(chat["ai"])
+                message(chat["ai"], key=f"ai_{i}")
 
             # st.chat_message(f"ai : {chat["ai"]}")
             
