@@ -15,19 +15,19 @@ from langchain_community.chat_message_histories import (
 st.title("Ai Hadees App")
 
 
-st.markdown("generate your GROQ API key from : [GROQ_API_KEY](https://console.groq.com/keys)")
+st.markdown("generate your GROQ API key from : [API_KEY](https://console.groq.com/keys)")
 
 api_key = st.text_input("Enter your GROQ API key", type="password")
 
 csv_file = 'document_metadata (1).csv'
 emb = 'faiss_index (1).bin'
-
+if api_key:
 # Initialize the language model with specified parameters
-llm = ChatGroq(
-    api_key=api_key,
-    model_name="llama-3.1-70b-versatile",
-    temperature=0.3,
-)
+    llm = ChatGroq(
+        api_key=api_key,
+        model_name="llama-3.1-70b-versatile",
+        temperature=0.3,
+    )
 
 
 if "chats" not in st.session_state:
