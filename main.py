@@ -12,10 +12,13 @@ from langchain_community.chat_message_histories import (
     StreamlitChatMessageHistory,
 )
 
+st.title("Ai Hadees App")
 
-api_key = st.secrets["api_key"]['GROQ_API_KEY']
 
-# api_key = os.getenv('GROQ_API_KEY')
+st.markdown("generate your GROQ API key from : [GROQ_API_KEY](https://console.groq.com/keys)")
+
+api_key = st.text_input("Enter your GROQ API key", type="password")
+
 csv_file = 'document_metadata (1).csv'
 emb = 'faiss_index (1).bin'
 
@@ -161,20 +164,20 @@ def generate_chat_response(question, index, document_data, api_key):
 
 
 def main():
-    st.title("Ai Hadees App")
     path = 'image/Screenshot from 2024-08-31 16-50-58.png'
 
     st.sidebar.image(path, use_column_width=True)
 
 
     user_input = st.chat_input("Enter your question regarding to nukhari ")
-    # print(user_input)
+   
     if user_input:
-        # print(user_input)
-        index, document_data = load_vectorstore()
-        # context = retrieve_context(user_input, index, document_data)
-        # print(context)
-        response = generate_chat_response(question=user_input, api_key=api_key,index=index, document_data=document_data)
+      
+        if api_key:
+            index, document_data = load_vectorstore()
+            response = generate_chat_response(question=user_input, api_key=api_key,index=index, document_data=document_data)
+        else:
+            st.info("Please provide an API key to use the chatbot.")
         for i, chat in enumerate(st.session_state.chats):
         # Create two columns: one for the AI message (left) and one for the user message (right)
         
