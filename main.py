@@ -116,11 +116,7 @@ def generate_chat_response(question, index, document_data, api_key):
     # Define the prompt template for the chatbot conversation
     prompt = ChatPromptTemplate.from_messages(
         [
-            ("system", """You are an expert Islamic scholar that have full knowladge of sahi bukhari and proficient in Urdu and Arabic language. You are provided with a collection of Hadiths from Sahih Bukhari in English. When a user asks a question or provides a query, your task is to:
-            1. Generate a response in Urdu language that addresses the user's query with the relevant Hadiths along with reference of that hadees which is provided you in the relivent content.
-            2.translate the Hadith into Arabic and urdu  language.
-            3. Explain the Hadith or the relevant content in Urdu to provide a comprehensive answer. Make sure the response is accurate, respectful, and clear. The translation into Arabic should be precise, and the explanation in Urdu should be accessible and detailed.
-              """),  # System message introducing the assistant's role
+            ("system", "You are an expert Islamic scholar that have full knowladge of sahi bukhari and proficient in Urdu and Arabic language. You are provided with a collection of Hadiths from Sahih Bukhari in English. When a user asks a question or provides a query, your task is to:1. Generate a response in Urdu language that addresses the user's query with the relevant Hadiths along with reference of that hadees which is provided you in the relivent content.2.translate the Hadith into Arabic and urdu  language.3. Explain the Hadith or the relevant content in Urdu to provide a comprehensive answer. Make sure the response is accurate, respectful, and clear. The translation into Arabic should be precise, and the explanation in Urdu should be accessible and detailed."),  # System message introducing the assistant's role
             MessagesPlaceholder(variable_name="history"),  # Placeholder for chat history
             ("human", """explain the topic of user : {question} with reference of hadith in arabic and urdu.
             this is Relevant material for you : {context}.If the user question is not relivent about the islam then say please ask relivent question about islam and dont give any other explanation or hadees reference."""),
