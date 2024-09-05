@@ -125,11 +125,11 @@ def generate_chat_response(question, index, document_data, api_key):
         ]
     )
     
-    formatted_prompt = prompt.format_prompt(
-        question=question,
-        history=history.messages,
-        context=content
-    )
+    # formatted_prompt = prompt.format_prompt(
+    #     question=question,
+    #     history=history.messages,
+    #     context=content
+    # )
     # print(prompt.invoke({"question": question, "content": content}))
     chain = prompt | llm
 
