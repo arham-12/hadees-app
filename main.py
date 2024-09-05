@@ -13,7 +13,7 @@ from langchain_community.chat_message_histories import (
     StreamlitChatMessageHistory,
 )
 
-st.title("Ai Hadees App")
+st.title("Islamic Ai 🕌🤖")
 
 
 st.markdown("generate your GROQ API key from : [API_KEY](https://console.groq.com/keys)")
@@ -167,7 +167,7 @@ def main():
     st.sidebar.image(path, use_column_width=True)
 
 
-    user_input = st.chat_input("Enter your question regarding to nukhari ")
+    user_input = st.chat_input("Enter your question regarding to islam")
    
     if user_input:
       
