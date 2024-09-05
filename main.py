@@ -120,10 +120,10 @@ def generate_chat_response(question, index, document_data, api_key):
             1. Generate a response in Urdu language that addresses the user's query with the relevant Hadiths along with reference of that hadees which is provided you in the relivent content.
             2.translate the Hadith into Arabic and urdu  language.
             3. Explain the Hadith or the relevant content in Urdu to provide a comprehensive answer. Make sure the response is accurate, respectful, and clear. The translation into Arabic should be precise, and the explanation in Urdu should be accessible and detailed.
-            4. If the user question is not relivent about the islam then say please ask relivent question about islam."""),  # System message introducing the assistant's role
+            4. """),  # System message introducing the assistant's role
             MessagesPlaceholder(variable_name="history"),  # Placeholder for chat history
             ("human", """explain the topic of user : {question} with reference of hadith in arabic and urdu.
-            this is Relevant material for you : {context}."""),
+            this is Relevant material for you : {context}.If the user question is not relivent about the islam then say please ask relivent question about islam."""),
             # Message template for user input, with placeholders for user's question and context
         ]
     )
