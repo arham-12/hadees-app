@@ -111,7 +111,7 @@ def generate_chat_response(question, index, document_data, api_key):
     history = StreamlitChatMessageHistory(key="chat_messages")
 
     # Retieve relevant context from documents based on the user's question
-    content = retrieve_context(question, index, document_data)
+    context = retrieve_context(question, index, document_data)
     # st.write(content)
     
     # Define the prompt template for the chatbot conversation
@@ -151,7 +151,7 @@ def generate_chat_response(question, index, document_data, api_key):
     response = runable_chain.invoke({
         "question": question,
         "history": history.messages,
-        "context": content
+        "context": context
     }, config)
 
     # Add the AI response to the history
